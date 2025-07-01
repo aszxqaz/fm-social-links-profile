@@ -1,0 +1,152 @@
+:root {
+  --color-accent: hsl(75, 94%, 57%);
+  --color-neutral-100: hsl(0, 0%, 100%);
+  --color-neutral-700: hsl(0, 0%, 20%);
+  --color-neutral-800: hsl(0, 0%, 12%);
+  --color-neutral-900: hsl(0, 0%, 8%);
+
+  --font-family-serif: "Inter", sans-serif;
+  --font-size-md: 0.875rem;
+  --font-size-lg: 1.5rem;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+}
+
+@layer reset {
+  * {
+    box-sizing: border-box;
+  }
+
+  body,
+  p,
+  h1 {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+  button {
+    font: inherit;
+  }
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/static/Inter-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/static/Inter-SemiBold.ttf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/static/Inter-SemiBold.ttf");
+  font-weight: 700;
+}
+
+@layer global {
+  body {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-neutral-100);
+    background-color: var(--color-neutral-900);
+  }
+}
+
+@layer components {
+  .page-layout {
+    --page-layout-padding: 1.71875rem;
+
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: var(--page-layout-padding) 1fr var(
+        --page-layout-padding
+      );
+    grid-template-rows: 1fr max-content;
+
+    > * {
+      grid-column-start: 2;
+    }
+  }
+
+  .center {
+    display: grid;
+    place-items: center;
+  }
+
+  .button {
+    display: inline grid;
+    place-items: center;
+    height: 2.8125rem;
+    padding-inline: 2rem;
+    cursor: pointer;
+    font-weight: var(--font-weight-bold);
+    background-color: var(--color-neutral-700);
+    border-radius: var(--border-radius-md);
+  }
+
+  .button:hover,
+  .button:focus-visible {
+    background-color: var(--color-accent);
+    color: var(--color-neutral-700);
+  }
+
+  .profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    width: min(24rem, 100%);
+    padding: 2.5rem;
+    background-color: var(--color-neutral-800);
+    border-radius: var(--border-radius-lg);
+
+    > .profile-card__avatar {
+      width: 29%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+    }
+
+    > .profile-card__quote {
+      &::before,
+      &::after {
+        content: '"';
+      }
+    }
+
+    > .profile-card__links {
+      align-self: stretch;
+      display: grid;
+      row-gap: 1rem;
+    }
+  }
+
+  .profile-details {
+    text-align: center;
+
+    > .profile-details__fullname {
+      color: var(--color-neutral-100);
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    > .profile-details__location {
+      color: var(--color-accent);
+      font-weight: var(--font-weight-bold);
+    }
+  }
+}
